@@ -7,7 +7,6 @@
 //
 
 #import "CircleView.h"
-#import "CGPointUtils.h"
 #import "MDCircleGestureRecognizer.h"
 
 @implementation CircleView

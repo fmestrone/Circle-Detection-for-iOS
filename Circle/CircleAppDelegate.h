@@ -10,7 +10,7 @@
 
 @class CircleViewController;
 
-@interface CircleAppDelegate : NSObject <UIApplicationDelegate> {
+@interface CircleAppDelegate : UIResponder <UIApplicationDelegate> {
     UIWindow *window;
     CircleViewController *viewController;
 }
