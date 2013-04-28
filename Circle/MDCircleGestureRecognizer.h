@@ -35,14 +35,17 @@ typedef enum MDCircleGestureError {
     NSMutableArray *points_;
     CGPoint firstTouch_;
     NSTimeInterval firstTouchTime_;
-    MDCircleGestureError error_;
 }
 
 @property CGFloat circleClosureAngleVariance;
+/// Maximum distance allowed between the two end points, in pixels
 @property CGFloat circleClosureDistanceVariance;
+/// Maximum time allowed to complete a circle, in seconds
 @property CGFloat maximumCircleTime;
 @property CGFloat radiusVariancePercent;
 @property NSInteger overlapTolerance;
+/// The minimum number of points that should make up a circle
+@property NSInteger minimumNumPoints;
 
 @property (readonly) CGPoint center;
 @property (readonly) CGFloat radius;

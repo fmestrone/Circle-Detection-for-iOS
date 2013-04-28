@@ -8,9 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
-@interface CircleViewController : UIViewController
+@class CircleSettingsController;
+
+@interface CircleViewController : UIViewController <UIPopoverControllerDelegate>
 {
-    UIViewController *settingsController;
+    CircleSettingsController *settingsController;
     UIPopoverController *popover;
 }
 

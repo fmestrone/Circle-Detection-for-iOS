@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2F033905172D954C00F0EEFE /* MainWindow-iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F033903172D954C00F0EEFE /* MainWindow-iPad.xib */; };
 		2F83E2E7172BDABA0034113B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F83E2E6172BDABA0034113B /* UIKit.framework */; };
 		2F83E2E9172BDABA0034113B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F83E2E8172BDABA0034113B /* Foundation.framework */; };
 		2F83E2EB172BDABA0034113B /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F83E2EA172BDABA0034113B /* CoreGraphics.framework */; };
@@ -21,12 +22,12 @@
 		2F83E310172BE05D0034113B /* CircleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F83E30C172BDBE90034113B /* CircleViewController.m */; };
 		2F83E311172BE0610034113B /* MDCircleGestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F83E30E172BDBF00034113B /* MDCircleGestureRecognizer.m */; };
 		2F83E314172BE0DB0034113B /* CircleAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F83E313172BE0DB0034113B /* CircleAppDelegate.m */; };
-		2F83E31B172C1DBB0034113B /* MainWindow-iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F83E319172C1DBB0034113B /* MainWindow-iPad.xib */; };
 		2F83E322172C377B0034113B /* CircleSettingsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F83E320172C377B0034113B /* CircleSettingsController.m */; };
 		2F83E323172C377B0034113B /* CircleSettingsController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F83E321172C377B0034113B /* CircleSettingsController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2F033904172D954C00F0EEFE /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = "en.lproj/MainWindow-iPad.xib"; sourceTree = "<group>"; };
 		2F83E2E3172BDABA0034113B /* Circle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Circle.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2F83E2E6172BDABA0034113B /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		2F83E2E8172BDABA0034113B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -44,11 +45,10 @@
 		2F83E30A172BDBE90034113B /* CircleView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CircleView.m; sourceTree = "<group>"; };
 		2F83E30B172BDBE90034113B /* CircleViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CircleViewController.h; sourceTree = "<group>"; };
 		2F83E30C172BDBE90034113B /* CircleViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CircleViewController.m; sourceTree = "<group>"; };
-		2F83E30D172BDBF00034113B /* MDCircleGestureRecognizer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MDCircleGestureRecognizer.h; sourceTree = "<group>"; };
-		2F83E30E172BDBF00034113B /* MDCircleGestureRecognizer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MDCircleGestureRecognizer.m; sourceTree = "<group>"; };
+		2F83E30D172BDBF00034113B /* MDCircleGestureRecognizer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MDCircleGestureRecognizer.h; path = Circle/MDCircleGestureRecognizer.h; sourceTree = "<group>"; };
+		2F83E30E172BDBF00034113B /* MDCircleGestureRecognizer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = MDCircleGestureRecognizer.m; path = Circle/MDCircleGestureRecognizer.m; sourceTree = "<group>"; };
 		2F83E312172BE0DB0034113B /* CircleAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CircleAppDelegate.h; sourceTree = "<group>"; };
 		2F83E313172BE0DB0034113B /* CircleAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CircleAppDelegate.m; sourceTree = "<group>"; };
-		2F83E31A172C1DBB0034113B /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = "en.lproj/MainWindow-iPad.xib"; sourceTree = "<group>"; };
 		2F83E31F172C377B0034113B /* CircleSettingsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CircleSettingsController.h; sourceTree = "<group>"; };
 		2F83E320172C377B0034113B /* CircleSettingsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CircleSettingsController.m; sourceTree = "<group>"; };
 		2F83E321172C377B0034113B /* CircleSettingsController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CircleSettingsController.xib; sourceTree = "<group>"; };
@@ -68,6 +68,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2F033902172D61D500F0EEFE /* Circle Gesture Recognizer */ = {
+			isa = PBXGroup;
+			children = (
+				2F83E30D172BDBF00034113B /* MDCircleGestureRecognizer.h */,
+				2F83E30E172BDBF00034113B /* MDCircleGestureRecognizer.m */,
+			);
+			name = "Circle Gesture Recognizer";
+			path = ..;
+			sourceTree = "<group>";
+		};
 		2F83E2DA172BDABA0034113B = {
 			isa = PBXGroup;
 			children = (
@@ -99,7 +109,7 @@
 			isa = PBXGroup;
 			children = (
 				2F83E303172BDB320034113B /* MainWindow.xib */,
-				2F83E319172C1DBB0034113B /* MainWindow-iPad.xib */,
+				2F033903172D954C00F0EEFE /* MainWindow-iPad.xib */,
 				2F83E306172BDB900034113B /* CircleViewController.xib */,
 				2F83E321172C377B0034113B /* CircleSettingsController.xib */,
 				2F83E312172BE0DB0034113B /* CircleAppDelegate.h */,
@@ -110,8 +120,7 @@
 				2F83E30C172BDBE90034113B /* CircleViewController.m */,
 				2F83E31F172C377B0034113B /* CircleSettingsController.h */,
 				2F83E320172C377B0034113B /* CircleSettingsController.m */,
-				2F83E30D172BDBF00034113B /* MDCircleGestureRecognizer.h */,
-				2F83E30E172BDBF00034113B /* MDCircleGestureRecognizer.m */,
+				2F033902172D61D500F0EEFE /* Circle Gesture Recognizer */,
 				2F83E2ED172BDABA0034113B /* Supporting Files */,
 			);
 			path = Circle;
@@ -189,8 +198,8 @@
 				2F83E2FD172BDABB0034113B /* Default-568h@2x.png in Resources */,
 				2F83E305172BDB320034113B /* MainWindow.xib in Resources */,
 				2F83E308172BDB900034113B /* CircleViewController.xib in Resources */,
-				2F83E31B172C1DBB0034113B /* MainWindow-iPad.xib in Resources */,
 				2F83E323172C377B0034113B /* CircleSettingsController.xib in Resources */,
+				2F033905172D954C00F0EEFE /* MainWindow-iPad.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -213,6 +222,14 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		2F033903172D954C00F0EEFE /* MainWindow-iPad.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2F033904172D954C00F0EEFE /* en */,
+			);
+			name = "MainWindow-iPad.xib";
+			sourceTree = "<group>";
+		};
 		2F83E2EF172BDABA0034113B /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (

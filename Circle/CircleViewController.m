@@ -8,24 +8,32 @@
 
 #import "CircleViewController.h"
 #import "MDCircleGestureRecognizer.h"
+#import "CircleSettingsController.h"
 
 @implementation CircleViewController
 
 - (void)openSettings:(id)sender
 {
-    if ( settingsController == nil ) {
-        //settingsController = [[ColorPickerViewController alloc] initWithStyle:UITableViewStylePlain];
-    }
-    
-    if ( popover == nil) {
-        //The color picker popover is not showing. Show it.
-        popover = [[UIPopoverController alloc] initWithContentViewController:settingsController];
-        [popover presentPopoverFromBarButtonItem:(UIBarButtonItem *)sender permittedArrowDirections:UIPopoverArrowDirectionUp animated:YES];
+    if ( UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad ) {
+        if ( popover == nil) {
+            //The color picker popover is not showing. Show it.
+            popover = [[UIPopoverController alloc] initWithContentViewController:settingsController];
+            popover.delegate = self;
+            [popover presentPopoverFromRect:((UIView *)sender).frame inView:self.view permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+        } else {
+            //The color picker popover is showing. Hide it.
+            [popover dismissPopoverAnimated:YES];
+        }
     } else {
-        //The color picker popover is showing. Hide it.
-        [popover dismissPopoverAnimated:YES];
-        popover = nil;
+        settingsController.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+        [self presentViewController:settingsController animated:YES completion:NULL];
     }
+}
+
+- (void)popoverControllerDidDismissPopover:(UIPopoverController *)popoverController
+{
+    popover = nil;
+    [popoverController release];
 }
 
 - (void)viewDidLoad
@@ -35,6 +43,11 @@
     [self.view addGestureRecognizer:gr];
     gr.delegate = (id<MDCircleGestureFailureDelegate>)self.view;
     [gr release];
+    if ( settingsController == nil ) {
+        settingsController = [[CircleSettingsController alloc] initWithNibName:nil bundle:nil];
+        settingsController.gr = gr;
+        settingsController.contentSizeForViewInPopover = CGSizeMake(320.0, 430.0);
+    }
 }
 
 - (void)viewDidUnload 

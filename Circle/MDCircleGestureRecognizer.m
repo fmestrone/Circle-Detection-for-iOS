@@ -15,6 +15,7 @@
 @synthesize maximumCircleTime = maximumCircleTime_;
 @synthesize radiusVariancePercent = radiusVariancePercent_;
 @synthesize overlapTolerance = overlapTolerance_;
+@synthesize minimumNumPoints = minimumNumPoints_;
 
 @synthesize center = center_;
 @synthesize radius = radius_;
@@ -25,9 +26,10 @@
     if ( (self = [super init]) ) {
         circleClosureAngleVariance_ = 45.0;
         circleClosureDistanceVariance_ = 50.0;
-        maximumCircleTime_ = 20.0;
+        maximumCircleTime_ = 3.0;
         radiusVariancePercent_ = 25.0;
         overlapTolerance_ = 3;
+        minimumNumPoints_ = 6;
         points_ = [[NSMutableArray alloc] init];
         firstTouch_ = CGPointZero;
         firstTouchTime_ = 0.0;
@@ -100,7 +102,7 @@
     }
 
     // Not enough points
-    if ( [points_ count] < 6 ) {
+    if ( [points_ count] < minimumNumPoints_ ) {
         [self failWithError:MDCircleGestureErrorTooShort];
         return;
     }
@@ -189,7 +191,6 @@
             [self failWithError:MDCircleGestureErrorRadiusVarianceTolerance];
             return;
         }
-        
         
         CGFloat pointAngle = angleBetweenLines(firstTouch_, center_, onePoint, center_);
         

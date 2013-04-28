@@ -21,6 +21,7 @@
     CGPoint center;
     CGFloat radius;
     UILabel *label;
+    IBOutlet UIButton *popoverButton;
 }
 
 @property (nonatomic, retain) IBOutlet UILabel *label;

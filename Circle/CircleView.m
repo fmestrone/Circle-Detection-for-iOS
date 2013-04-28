@@ -86,7 +86,7 @@
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch
 {
     label.text = @"";
-    return YES;
+    return touch.view != popoverButton;
 }
 
 - (void) handleGesture:(MDCircleGestureRecognizer *)gr
