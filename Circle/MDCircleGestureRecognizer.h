@@ -13,11 +13,29 @@ CGFloat distanceBetweenPoints (CGPoint first, CGPoint second);
 CGFloat angleBetweenPoints(CGPoint first, CGPoint second);
 CGFloat angleBetweenLines(CGPoint line1Start, CGPoint line1End, CGPoint line2Start, CGPoint lin2End);
 
+@class MDCircleGestureRecognizer;
+
+@protocol MDCircleGestureFailureDelegate <UIGestureRecognizerDelegate>
+
+- (void) circleGestureFailed:(MDCircleGestureRecognizer *)gr;
+
+@end
+
+typedef enum MDCircleGestureError {
+    MDCircleGestureErrorNone,
+    MDCircleGestureErrorNotClosed,
+    MDCircleGestureErrorTooSlow,
+    MDCircleGestureErrorTooShort,
+    MDCircleGestureErrorRadiusVarianceTolerance,
+    MDCircleGestureErrorOverlapTolerance,
+} MDCircleGestureError;
+
 @interface MDCircleGestureRecognizer : UIGestureRecognizer
 {
     NSMutableArray *points_;
     CGPoint firstTouch_;
     NSTimeInterval firstTouchTime_;
+    MDCircleGestureError error_;
 }
 
 @property CGFloat circleClosureAngleVariance;
@@ -29,5 +47,6 @@ CGFloat angleBetweenLines(CGPoint line1Start, CGPoint line1End, CGPoint line2Sta
 @property (readonly) CGPoint center;
 @property (readonly) CGFloat radius;
 @property (readonly) NSArray *points;
+@property (readonly) MDCircleGestureError error;
 
 @end

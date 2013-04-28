@@ -7,9 +7,9 @@
 //
 
 #import "CircleView.h"
-#import "MDCircleGestureRecognizer.h"
 
 @implementation CircleView
+
 @synthesize label;
 
 - (id)initWithFrame:(CGRect)frame {
@@ -58,9 +58,41 @@
     }
 }
 
+- (void)circleGestureFailed:(MDCircleGestureRecognizer *)gr
+{
+    label.textColor = [UIColor redColor];
+    switch ( gr.error ) {
+        case MDCircleGestureErrorNotClosed:
+            label.text = @"Failed: Didn't finish close enough to starting point";
+            break;
+        case MDCircleGestureErrorOverlapTolerance:
+            label.text = @"Failed: Points beyond overlap tolerance";
+            break;
+        case MDCircleGestureErrorRadiusVarianceTolerance:
+            label.text = @"Failed: Points outside radius variance tolerance level";
+            break;
+        case MDCircleGestureErrorTooShort:
+            label.text = @"Failed: Not enough points";
+            break;
+        case MDCircleGestureErrorTooSlow:
+            label.text = @"Failed: Took too long to draw";
+            break;
+        case MDCircleGestureErrorNone:
+            label.text = @"";
+            break;
+    }
+}
+
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch
+{
+    label.text = @"";
+    return YES;
+}
+
 - (void) handleGesture:(MDCircleGestureRecognizer *)gr
 {
     if ( gr.state == UIGestureRecognizerStateEnded ) {
+        label.textColor = [UIColor whiteColor];
         label.text = [NSString stringWithFormat:@"Circle Detected: centre %@, radius %f", NSStringFromCGPoint(gr.center), gr.radius];
         center = gr.center;
         radius = gr.radius;

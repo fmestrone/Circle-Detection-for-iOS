@@ -8,11 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
-
-
-@interface CircleViewController : UIViewController {
-
+@interface CircleViewController : UIViewController
+{
+    UIViewController *settingsController;
+    UIPopoverController *popover;
 }
 
-@end
+- (IBAction)openSettings:(id)sender;
 
+@end

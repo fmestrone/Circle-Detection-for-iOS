@@ -18,6 +18,7 @@
 
 @synthesize center = center_;
 @synthesize radius = radius_;
+@synthesize error = error_;
 
 - (id) init
 {
@@ -34,6 +35,18 @@
         radius_ = 0.0;
     }
     return self;
+}
+
+- (void) failWithError:(MDCircleGestureError)error
+{
+#ifdef DEBUG
+    NSLog(@"Failed: Circle was not detected, code %d", error);
+#endif
+    error_ = error;
+    self.state = UIGestureRecognizerStateFailed;
+    if ( [self.delegate conformsToProtocol:@protocol(MDCircleGestureFailureDelegate)] ) {
+        [(id<MDCircleGestureFailureDelegate>)self.delegate circleGestureFailed:self];
+    }
 }
 
 - (NSArray *) points
@@ -76,28 +89,19 @@
     
     // Didn't finish close enough to starting point
     if ( distanceBetweenPoints(firstTouch_, endPoint) > circleClosureDistanceVariance_ ) {
-#ifdef DEBUG
-        NSLog(@"Failed: Didn't finish close enough to starting point");
-#endif
-        self.state = UIGestureRecognizerStateFailed;
+        [self failWithError:MDCircleGestureErrorNotClosed];
         return;
     }
 
     // Took too long to draw
     if ( [NSDate timeIntervalSinceReferenceDate] - firstTouchTime_ > maximumCircleTime_ ) {
-#ifdef DEBUG
-        NSLog(@"Failed: Took too long to draw");
-#endif
-        self.state = UIGestureRecognizerStateFailed;
+        [self failWithError:MDCircleGestureErrorTooSlow];
         return;
     }
 
     // Not enough points
     if ( [points_ count] < 6 ) {
-#ifdef DEBUG
-        NSLog(@"Failed: Not enough points");
-#endif
-        self.state = UIGestureRecognizerStateFailed;
+        [self failWithError:MDCircleGestureErrorTooShort];
         return;
     }
     
@@ -182,10 +186,7 @@
         CGPoint onePoint = CGPointFromString(onePointString);
         CGFloat distanceFromRadius = fabsf(distanceBetweenPoints(center_, onePoint));
         if ( distanceFromRadius < minRadius || distanceFromRadius > maxRadius ) {
-#ifdef DEBUG
-            NSLog(@"Failed: Points outside radius variance tolerance level");
-#endif
-            self.state = UIGestureRecognizerStateFailed;
+            [self failWithError:MDCircleGestureErrorRadiusVarianceTolerance];
             return;
         }
         
@@ -193,10 +194,7 @@
         CGFloat pointAngle = angleBetweenLines(firstTouch_, center_, onePoint, center_);
         
         if ( (pointAngle > currentAngle && hasSwitched) && (index < [points_ count] - overlapTolerance_) ) {
-#ifdef DEBUG
-            NSLog(@"Failed: Points beyond overlap tolerance");
-#endif
-            self.state = UIGestureRecognizerStateFailed;
+            [self failWithError:MDCircleGestureErrorOverlapTolerance];
             return;
         }
         
@@ -210,6 +208,7 @@
     }
     // End Circle Check=========================================================
     
+    error_ = MDCircleGestureErrorNone;
     self.state = UIGestureRecognizerStateEnded;
 }
 
@@ -248,5 +247,4 @@ CGFloat angleBetweenLines(CGPoint line1Start, CGPoint line1End, CGPoint line2Sta
 	CGFloat rads = acos(((a*c) + (b*d)) / ((sqrt(a*a + b*b)) * (sqrt(c*c + d*d))));
 	
 	return radiansToDegrees(rads);
-	
 }
