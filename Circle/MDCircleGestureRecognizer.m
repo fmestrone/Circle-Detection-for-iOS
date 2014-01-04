@@ -133,7 +133,7 @@
             topMostIndex = index;
         }
         if ( onePoint.y < bottomMost.y ) {
-            onePoint = bottomMost;
+            bottomMost = onePoint;
             bottomMostIndex = index;
         }
         index++;
@@ -154,7 +154,7 @@
     }
     
     // Figure out the approx middle of the circle
-    center_ = CGPointMake(leftMost.x + (rightMost.x - leftMost.x) / 2.0, bottomMost.y + (topMost.y - bottomMost.y) / 2.0);
+    center_ = CGPointMake((rightMost.x + leftMost.x) / 2.0, (topMost.y + bottomMost.y) / 2.0);
 
     // This check is probably not necessary
     // Make sure they closed the circle - the startPoint and endPoint should be within a few degrees of each other.
